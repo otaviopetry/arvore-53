@@ -4,25 +4,27 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Feather as Icon } from '@expo/vector-icons';
 
-import logoImg from '../../assets/logo-arvore.png';
-
-export default function Library() {
-    const navigation = useNavigation();
+export default function Library({ navigation }) {
 
     function goBack () {
         navigation.goBack();
     }
 
-  return (
+    return (
     <View style={styles.container}>
         <TouchableOpacity onPress={goBack}>
-            <Icon name="arrow-left" size={28} color="#fff" />    
+            <Icon name="arrow-left" size={28} color="#fff" />
+            <Text>Voltar para o Quiz</Text> 
         </TouchableOpacity>
-        <Image source={logoImg} />
-        <Text style={styles.welcomeText}>Tela da biblioteca</Text>
+        <TouchableOpacity onPress={ () => navigation.navigate('Profile')}>
+            <Icon name="arrow-right" size={28} color="#fff" />
+            <Text>Ir para o perfil do aluno</Text> 
+        </TouchableOpacity>
+
+        <Text style={styles.mainText}>Tela da biblioteca</Text>
         <StatusBar style="auto" />
     </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
@@ -35,7 +37,8 @@ const styles = StyleSheet.create({
   logoImg: {
       marginBottom: 16
   },
-  welcomeText: {
+  mainText: {
+      marginTop: 8,
       fontWeight: 'bold',
       color: '#fff'
   }

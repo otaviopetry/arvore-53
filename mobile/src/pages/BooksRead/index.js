@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 
-export default function Profile({ navigation }) {
+export default function BooksRead({ navigation }) {
 
     function goBack () {
         navigation.goBack();
@@ -14,14 +14,15 @@ export default function Profile({ navigation }) {
     <View style={styles.container}>
         <TouchableOpacity onPress={goBack}>
             <Icon name="arrow-left" size={28} color="#fff" />
-            <Text>Voltar para a Biblioteca</Text> 
+            <Text>Voltar para o início da Estante</Text> 
         </TouchableOpacity>
-        <TouchableOpacity onPress={ () => navigation.navigate('Bookshelf')}>
+        <TouchableOpacity onPress={ () => navigation.navigate('Book')}>
             <Icon name="arrow-right" size={28} color="#fff" />
-            <Text>Ir para a Estante</Text> 
+            <Text>Ir para o livro</Text> 
         </TouchableOpacity>
 
-        <Text style={styles.mainText}>Tela do Perfil do Aluno</Text>
+
+        <Text style={styles.mainText}>Tela da Estante de Livros</Text>
         <StatusBar style="auto" />
     </View>
     );

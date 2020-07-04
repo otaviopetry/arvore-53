@@ -3,8 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
+import logoImg from '../../assets/logo-arvore.png';
 
-export default function Profile({ navigation }) {
+export default function Achievements({ navigation }) {
 
     function goBack () {
         navigation.goBack();
@@ -14,14 +15,15 @@ export default function Profile({ navigation }) {
     <View style={styles.container}>
         <TouchableOpacity onPress={goBack}>
             <Icon name="arrow-left" size={28} color="#fff" />
-            <Text>Voltar para a Biblioteca</Text> 
+            <Text>Voltar para o início</Text>   
         </TouchableOpacity>
-        <TouchableOpacity onPress={ () => navigation.navigate('Bookshelf')}>
+        <TouchableOpacity onPress={ () => navigation.navigate('Library')}>
             <Icon name="arrow-right" size={28} color="#fff" />
-            <Text>Ir para a Estante</Text> 
+            <Text>Ir para Biblioteca</Text>
         </TouchableOpacity>
 
-        <Text style={styles.mainText}>Tela do Perfil do Aluno</Text>
+        <Image source={logoImg} />
+        <Text style={styles.welcomeText}>Tela inicial do Quiz</Text>
         <StatusBar style="auto" />
     </View>
     );
@@ -37,8 +39,7 @@ const styles = StyleSheet.create({
   logoImg: {
       marginBottom: 16
   },
-  mainText: {
-      marginTop: 8,
+  welcomeText: {
       fontWeight: 'bold',
       color: '#fff'
   }

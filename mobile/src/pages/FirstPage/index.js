@@ -5,38 +5,33 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 import logoImg from '../../assets/logo-arvore.png';
 
-export default function FirstPage() {
-    const navigation = useNavigation();
+export default function FirstPage( { navigation }) {        
 
-    function navigateToLibrary () {
-        navigation.navigate('Library');
-    }
-
-  return (
+    return (
     <View style={styles.container}>
         <Image source={logoImg} style={styles.logoImg} />
-      <Text style={styles.welcomeText}>Primeira tela do desafio Árvore - Time 53!</Text>
-      <StatusBar style="auto" />
-      <TouchableOpacity onPress={navigateToLibrary}>
-          <Text>Ver biblioteca</Text>
-      </TouchableOpacity>
+        <Text style={styles.welcomeText}>Primeira tela do desafio Árvore - Time 53!</Text>
+        <StatusBar style="auto" />
+        <TouchableOpacity onPress={ () => navigation.navigate('Quiz')}>
+            <Text>Começar</Text>
+        </TouchableOpacity>
 
     </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
+    container: {
     flex: 1,
     backgroundColor: '#45cbcd',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  logoImg: {
-      marginBottom: 16
-  },
-  welcomeText: {
-      fontWeight: 'bold',
-      color: '#fff'
-  }
+    },
+    logoImg: {
+        marginBottom: 16
+    },
+    welcomeText: {
+        fontWeight: 'bold',
+        color: '#fff'
+    }
 });
