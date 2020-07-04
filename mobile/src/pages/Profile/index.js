@@ -21,6 +21,12 @@ export default function Profile({ navigation }) {
             <Text>Ir para a Estante</Text> 
         </TouchableOpacity>
 
+
+        <TouchableOpacity onPress={ () => navigation.navigate('Achievements')}>
+            <Icon name="arrow-right" size={28} color="#fff" />
+            <Text>Ir para Conquistas</Text> 
+        </TouchableOpacity>
+
         <Text style={styles.mainText}>Tela do Perfil do Aluno</Text>
         <StatusBar style="auto" />
     </View>
