@@ -10,11 +10,13 @@ import { useNavigation } from '@react-navigation/native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 import logoImg from '../../assets/logo-arvore.png';
+import badge1 from '../../assets/badge1.png';
+import badge2 from '../../assets/badge2.png';
 
 export default function Achievements({listaInsignias}) {
 
-    listaInsignias = [{titulo:"Vira-páginas", imagem:"../../assets/badge1"}, 
-                      {titulo: "Multi-cultural", imagem:"../../assets/badge2"}];
+    listaInsignias = [{titulo:"Vira-páginas", imagem:'../../assets/badge1.png'}, 
+                      {titulo: "Multi-cultural", imagem:'../../assets/badge2.png'}];
 
     const navigation = useNavigation();
 
@@ -25,20 +27,23 @@ export default function Achievements({listaInsignias}) {
     function Insignia({titulo, imagem}) {
         return (
           <View style={styles.insignia}>
+            <Image style={styles.insignia_image} source={require('../../assets/badge1.png')}/>
             <Text style={styles.insignia_title}>{titulo}</Text>
-            <Image style={styles.insignia_image} source={imagem} />
           </View>
         );
       }
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={goBack}>
-                <Icon name="arrow-left" size={28} color="#fff" />    
+            <TouchableOpacity style={styles.menu} onPress={goBack}>
+                <Icon name="arrow-left" size={28} color="#fff" />  
+                <Image source={logoImg} />  
             </TouchableOpacity>
-            <Image source={logoImg} />
-            <Text style={styles.welcomeText}>Tela de Conquistas</Text>
+            
+            <Text style={styles.welcomeText}>Suas Conquistas</Text>
+
             <StatusBar style="auto" />
+
             <FlatList
                     data={listaInsignias}
                     renderItem={({ item }) => 
@@ -53,6 +58,11 @@ export default function Achievements({listaInsignias}) {
 }
 
 const styles = StyleSheet.create({
+  menu:{
+    paddingTop: 30,
+    flexDirection:'row',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#45cbcd',
@@ -63,22 +73,29 @@ const styles = StyleSheet.create({
       marginBottom: 16
   },
   welcomeText: {
+      fontSize: 25,
       fontWeight: 'bold',
       color: '#fff'
   },
   insignia: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#fafafa',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '80%'
+    width: '100%',
+    marginBottom: 10,
+    marginTop: 10
   },
   insignia_title: {
     fontWeight: 'bold',
-    color: 'black'
+    color: 'black',
+    fontSize: 20
   },
   insignia_image: {
-    borderRadius: '0.2em'
+    borderRadius: 0.1,
+    width: 'auto',
+    height: 50
   },
 
 });
