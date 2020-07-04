@@ -1,26 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Feather as Icon } from '@expo/vector-icons';
 
 import logoImg from '../../assets/logo-arvore.png';
 
-export default function FirstPage() {
+export default function Library() {
     const navigation = useNavigation();
 
-    function navigateToLibrary () {
-        navigation.navigate('Library');
+    function goBack () {
+        navigation.goBack();
     }
 
   return (
     <View style={styles.container}>
-        <Image source={logoImg} style={styles.logoImg} />
-      <Text style={styles.welcomeText}>Primeira tela do desafio Árvore - Time 53!</Text>
-      <StatusBar style="auto" />
-      <TouchableOpacity onPress={navigateToLibrary}>
-          <Text>Ver biblioteca</Text>
-      </TouchableOpacity>
-
+        <TouchableOpacity onPress={goBack}>
+            <Icon name="arrow-left" size={28} color="#fff" />    
+        </TouchableOpacity>
+        <Image source={logoImg} />
+        <Text style={styles.welcomeText}>Tela da biblioteca</Text>
+        <StatusBar style="auto" />
     </View>
   );
 }
