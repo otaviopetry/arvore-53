@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, ScrollVi
 import { Feather as Icon } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
-import AvatarPlaceholder from '../../assets/avatar-placeholder.png';
+import UserAvatar from '../../assets/user-avatar.png';
 
 const user = {
     name: 'Bianca',
@@ -123,7 +123,7 @@ export default function Profile({ navigation }) {
                 <View style={styles.userContainer}>
                     <View style={styles.summary}>
                         <View style={styles.avatarContainer}>
-                            <Image source={AvatarPlaceholder} style={styles.userAvatar} />
+                            <Image source={UserAvatar} style={styles.userAvatar} />
                         </View>
                         <View style={styles.userInfo}>
                             <View>
@@ -252,6 +252,11 @@ const styles = StyleSheet.create({
     avatarContainer: {
         marginLeft: 16
     },
+    userAvatar: {
+        width: 150,
+        height: 150,
+        marginRight: 16
+    },
     userContainer: {
         alignItems: 'stretch',
         marginTop: 16,        
@@ -270,9 +275,6 @@ const styles = StyleSheet.create({
     },
     summary: {
         flexDirection: 'row'
-    },
-    userAvatar: {
-        marginRight: 16
     },
     badgesContainer: {
         alignItems: 'center',
