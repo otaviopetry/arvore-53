@@ -10,6 +10,97 @@ import SmallBookPlaceholder from '../../assets/placeholder-smallbook.png';
 
 export default function Profile({ navigation }) {
 
+    const user = {
+        name: 'Bianca',
+        vocation: 'Viajante do Tempo',
+        schoolInfo: {
+            school: 'Colégio Leonardo da Vinci',
+            year: '1º ano A - Ensino Médio'
+        },
+        badges: [
+            {
+                id: 1,
+                name: 'Lê de tudo',
+                image_uri: 'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'
+            },
+            {
+                id: 2,
+                name: 'Multicultural',
+                image_uri: 'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'
+            },
+            {
+                id: 3,
+                name: '100% fiel',
+                image_uri: 'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'
+            }
+        ],
+        whatImReading: {
+            title: 'A volta ao mundo em 80 dias',
+            author: 'Julio Verne',
+            synopsis: 'Lorem ipsum dolor sit amet consectetur',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg'
+        },
+        myBookshelf: [
+            {
+                id: 1,
+                name: 'Alice no País das Maravilhas',
+                author: 'Lewis Carrol',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Lewis-Caroll-01.jpg'
+            },
+            {
+                id: 2,
+                name: 'Oliver Twist',
+                author: 'Charles Dickens',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Charles-Dickens-01.jpg'
+            },
+            {
+                id: 3,
+                name: 'A ilha do tesouro',
+                author: 'Robert Louis Stevensson',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Robert-Stevensson-01.jpg'
+            },
+            {
+                id: 4,
+                name: 'Que lindo é o seu jardim',
+                author: 'Agatha Christie',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Agatha-Christie-01.jpg'
+            },
+            {
+                id: 5,
+                name: 'As aventuras de Robinson Crusoé',
+                author: 'Daniel Defoe',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Daniel-Defoe-01.jpg'
+            },
+            {
+                id: 6,
+                name: 'Mulherzinhas',
+                author: 'Louisa May Alcott',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Louisa-May-Alcott.jpg'
+            }
+        ],
+        whatImRecommending: [
+            {
+                id: 6,
+                name: 'Mulherzinhas',
+                author: 'Louisa May Alcott',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Louisa-May-Alcott.jpg'
+            },
+            {
+                id: 5,
+                name: 'As aventuras de Robinson Crusoé',
+                author: 'Daniel Defoe',
+                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Daniel-Defoe-01.jpg'
+            }
+        ],
+        tags: [
+            'aventura',
+            'história',
+            'ciências',
+            'suspense',
+            'autores antigos'
+        ]
+    }
+
     function goBack () {
         navigation.goBack();
     }
@@ -38,10 +129,10 @@ export default function Profile({ navigation }) {
                         </View>
                         <View style={styles.userInfo}>
                             <View>
-                                <Text style={styles.userName}>Bianca</Text>
-                                <Text style={styles.userTag}>Viajante do Tempo</Text>
-                                <Text style={styles.userText}>Colégio Leonardo da Vinci</Text>
-                                <Text style={styles.userText}>1º ano A - Médio</Text>
+                                <Text style={styles.userName}>{user.name}</Text>
+                                <Text style={styles.userTag}>{user.vocation}</Text>
+                                <Text style={styles.userText}>{user.schoolInfo.school}</Text>
+                                <Text style={styles.userText}>{user.schoolInfo.year}</Text>
                             </View>                  
                         </View>
                     </View>
@@ -52,9 +143,10 @@ export default function Profile({ navigation }) {
                 <View style={styles.badgesContainer}>
                     
                         <View style={styles.badges}>
-                            <Image style={styles.badge} source={{ uri: 'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png' }} />
-                            <Image style={styles.badge} source={{ uri: 'http://192.168.0.102:3333/journey/badges/badge-multicultural.png' }} />
-                            <Image style={styles.badge} source={{ uri: 'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png' }} />
+                            
+                            {user.badges.map( badge => (
+                                <Image style={styles.badge} source={{ uri: badge.image_uri  }} />
+                            ))}
                             
                         </View>
                 </View>
@@ -66,13 +158,13 @@ export default function Profile({ navigation }) {
                 <Text style={styles.sectionTitle}>O que estou lendo</Text>
                 <TouchableOpacity style={styles.theBook} onPress={ () => navigation.navigate('Book')}>
                     <View style={{width: '30%', marginRight: 16}}>
-                        <Image style={styles.bookCover} source={{ uri: 'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg' }} />
+                        <Image style={styles.bookCover} source={{ uri: user.whatImReading.image_uri }} />
                     </View>
                     <View style={styles.theBook}>
                         <View style={{flexDirection: 'column'}}>
-                            <Text style={styles.theBookTitle}>A volta ao mundo em 80 dias</Text>
-                            <Text style={styles.theBookAuthor}>Julio Verne</Text>
-                            <Text style={styles.theBookSynopsis}>Lorem Ipsum dolor sit amet consectetur adipiscing elit</Text>
+                            <Text style={styles.theBookTitle}>{user.whatImReading.title}</Text>
+                            <Text style={styles.theBookAuthor}>{user.whatImReading.author}</Text>
+                            <Text style={styles.theBookSynopsis}>{user.whatImReading.synopsis}</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -82,31 +174,12 @@ export default function Profile({ navigation }) {
             <View style={styles.bookshelf}>
                 <Text style={styles.sectionTitle}>Minha estante</Text>
                 <Text style={styles.sectionSubtitle}>Livros que completei</Text>
-                <ScrollView style={styles.theActualShelf} horizontal>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
-                    <View style={styles.book}>
-                        <Image source={SmallBookPlaceholder} />
-                    </View>
+                <ScrollView style={styles.theActualShelf} horizontal>                    
+                    { user.myBookshelf.map( book => (
+                        <View key={book.id} style={styles.book}>
+                            <Image style={styles.bookshelfBook} source={{ uri: book.image_uri }} />
+                        </View>
+                    ))}                    
                 </ScrollView>            
             </View>
     
@@ -117,16 +190,12 @@ export default function Profile({ navigation }) {
                 <Text style={styles.sectionTitle}>O que eu indico</Text>
                 <Text style={styles.sectionSubtitle}>Livros que me marcaram</Text>
                 <View style={styles.recommendedBooksContainer}>
-                    <View style={styles.recommendedBook}>
-                        <Image style={{width: 120}} source={BookPlaceholder} />
-                    </View>
-                    <View style={styles.recommendedBook}>
-                        <Image style={{width: 120}} source={BookPlaceholder} />
-                    </View>
-                    <View style={styles.recommendedBook}>
-                        <Image style={{width: 120}} source={BookPlaceholder} />
-                    </View>
-                    
+                    { user.whatImRecommending.map( book => (
+                        <View key={book.id}>
+                            <Image style={styles.recommendedBook} source={{ uri: book.image_uri }} />
+                        </View>  
+                    ))}
+                                      
                 </View>
             </View>
             
@@ -238,8 +307,9 @@ const styles = StyleSheet.create({
     book: {
         marginRight: 8
     },
-    theActualShelf: {
-
+    bookshelfBook: {
+        width: 110,
+        height: 180
     },
     whatImReading: {
         paddingHorizontal: 16,
@@ -270,7 +340,9 @@ const styles = StyleSheet.create({
         marginTop: 8
     },
     recommendedBook: {
-        marginRight: 8
+        marginRight: 8,
+        width: 120,
+        height: 190
     },
     tags: {
         padding: 16
