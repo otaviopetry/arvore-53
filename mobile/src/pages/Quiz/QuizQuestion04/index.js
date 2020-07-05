@@ -25,7 +25,7 @@ export default function QuizQuestion01({ navigation }) {
     // answers container
     const question = {
         id: questionId,
-        question: 'Se você se encontrasse perdido na floresta, você...',
+        question: 'Se você estivesse perdido na floresta, você...',
         answers: [
             {   
                 id: 1,

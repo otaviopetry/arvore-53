@@ -27,7 +27,7 @@ export default function QuizQuestion01({ navigation }) {
     // answers container
     const question = {
         id: 1,
-        question: 'Qual destes inícios de livro te dão mais vontade de continuar?',
+        question: 'Qual destes inícios de livro te dá mais vontade de continuar?',
         answers: [
             {   
                 id: 1,
