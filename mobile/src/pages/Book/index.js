@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
 import { SocialIcon } from 'react-native-elements'
 import { Feather as Icon } from '@expo/vector-icons';
 
@@ -14,9 +14,8 @@ export default function Book({ navigation, bookInfo}) {
         autor: "Djamila Ribeiro",
         editora: "Companhia das Letras",
         descricao: "Dez lições breves para entender as origens do racismo e como combatê-lo. Neste pequeno manual, a filósofa e ativista Djamila Ribeiro trata de temas como atualidade do racismo, negritude, branquitude, violência racial, cultura, desejos e afetos.",
-        tags: ["história","sociedade"],
         idioma: "Português",
-        tematica: ["Negritude","Preconceito"]
+        tematica: ["Negritude","Preconceito","História","Sociedade"],
     };
 
     function goBack () {
@@ -34,11 +33,20 @@ export default function Book({ navigation, bookInfo}) {
         <View style={styles.book}>
             <Text style={styles.titulo}>{bookInfo.titulo}</Text>
             <Image source={{uri: bookInfo.imagem}}/>
-            <Text style={styles.autor}>{bookInfo.autor}</Text>
+            <Text style={styles.negrito}>{bookInfo.autor}</Text>
             <Text >{bookInfo.descricao}</Text>
+            <Text style={styles.negrito}>Idioma</Text>
+            <Text>{bookInfo.idioma}</Text>
+            <Text style={styles.negrito}>Tematica</Text>
+            <View style={styles.tematica}>
+                {bookInfo.tematica.map( item => (
+                    <Text style={styles.label}>{item}</Text>
+                ))}
+            </View>
 
-            <View style={styles.compartilhar}>
-                <SocialIcon
+            <View style={styles.botoesCompartilhar}>
+                <Button title="Compartilhar na Árvore"/>
+                <SocialIcon style={styles.compartilhar}
                     title='Compartilhar com Instagram'
                     button
                     light
@@ -73,11 +81,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 25
   },
-  autor: {
+  negrito: {
     fontWeight: 'bold'
   },
+  botoesCompartilhar: {
+    marginTop: 10,
+    flexDirection: 'row'
+  },
+  button: {
+    borderWidth: 5,
+    borderRadius: 15,
+    marginRight: 5,
+    backgroundColor: '#fafafa',
+    width: '50%'        
+ },
   compartilhar: {
+    marginRight: 5,
     backgroundColor: '#faf0',
     width: '50%' 
+  },
+  tematica: {
+    flexDirection: 'row'
+  },
+  label : {
+    borderWidth: 1,
+    marginRight: 5,
+    borderColor: 'black',
+    width: 'auto',
+    borderRadius: 1
   }
 });
