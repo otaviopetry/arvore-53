@@ -58,16 +58,6 @@ export default function Achievements({listaInsignias}) {
                             />
                         }
                 />
-
-                <View style={styles.botoesCompartilhar}>
-                    <Button style={styles.compartilharArvore} title="Compartilhar na Árvore"/>
-                    <SocialIcon style={styles.compartilhar} 
-                        button
-                        title='Divida com o Instagram!' 
-                        light
-                        type='instagram'
-                    />
-                </View>
             </View>
         </View>
     );
