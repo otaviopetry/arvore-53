@@ -10,15 +10,13 @@ import { useNavigation } from '@react-navigation/native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 import logoImg from '../../assets/logo-arvore.png';
-import badge1 from '../../assets/badge1.png';
-import badge2 from '../../assets/badge2.png';
 
 const IMAGE_PLACEHOLDER = "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indisponível";
 
 export default function Achievements({listaInsignias}) {
 
-    listaInsignias = [{titulo:"Vira-páginas", imagem:badge1}, 
-                      {titulo: "Multi-cultural", imagem:badge2}];
+    listaInsignias = [{titulo:"Vira-páginas", imagem:'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'}, 
+                      {titulo: "Multi-cultural", imagem:'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'}];
 
     const navigation = useNavigation();
 
@@ -29,7 +27,7 @@ export default function Achievements({listaInsignias}) {
     function Insignia({titulo, imagem}) {
         return (
           <View style={styles.insignia}>
-            <Image style={styles.insignia_image} source={imagem}/>
+            <Image style={styles.insignia_image} source={{ uri: imagem}}/>
             <Text style={styles.insignia_title}>{titulo}</Text>
           </View>
         );
