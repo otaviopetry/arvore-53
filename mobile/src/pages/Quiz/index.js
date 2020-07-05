@@ -1,31 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 import logoImg from '../../assets/logo-arvore.png';
 
-export default function Achievements({ navigation }) {
+export default function QuizWelcome({ navigation }) {
 
     function goBack () {
         navigation.goBack();
     }
 
     return (
-    <View style={styles.container}>
-        <TouchableOpacity onPress={goBack}>
-            <Icon name="arrow-left" size={28} color="#fff" />
-            <Text>Voltar para o início</Text>   
-        </TouchableOpacity>
-        <TouchableOpacity onPress={ () => navigation.navigate('Library')}>
-            <Icon name="arrow-right" size={28} color="#fff" />
-            <Text>Ir para Biblioteca</Text>
-        </TouchableOpacity>
+        <SafeAreaView style={styles.container}>
 
-        <Image source={logoImg} />
-        <Text style={styles.welcomeText}>Tela inicial do Quiz</Text>
-        <StatusBar style="auto" />
-    </View>
+            <StatusBar style="light" backgroundColor="#45cbcd" />
+
+            <View style={styles.welcome}>
+                <Text style={styles.welcomeText}>Oi, Bianca! Este é o início do Pomar, sua jornada pela plataforma da Árvore. Vamos responder umas perguntinhas para começar seu perfil?</Text>
+                <TouchableOpacity onPress={ () => navigation.navigate('QuizQuestion1') }>
+                    <Icon name="arrow-right" style={styles.startButton} />
+                </TouchableOpacity>
+            </View>
+                        
+        </SafeAreaView>
     );
 }
 
@@ -36,11 +34,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoImg: {
-      marginBottom: 16
-  },
+  welcome: {
+      alignItems: 'center'
+  },  
   welcomeText: {
       fontWeight: 'bold',
+      color: '#fff',
+      textAlign: 'center'
+  },
+  startButton: {
+      marginTop: 16,
+      fontSize: 24,
       color: '#fff'
   }
 });
