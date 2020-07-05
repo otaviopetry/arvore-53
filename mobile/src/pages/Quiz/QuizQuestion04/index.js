@@ -9,8 +9,6 @@ import styles from '../styles.js';
 
 import logoImg from '../../../assets/logo-arvore.png';
 
-import NextQuizQuestion from '../../Components/Quiz/QuizNextQuestion';
-
 export default function QuizQuestion01({ navigation }) {
 
     // navigate back
@@ -19,43 +17,45 @@ export default function QuizQuestion01({ navigation }) {
     }
 
     // initialize selected answer state
-    const [selectedAnswer, setSelectedAnswer] = useState(['0']);
+    const [selectedAnswer, setSelectedAnswer] = useState([]);
 
     // question id
-    const questionId = 1;
+    const questionId = 4;
 
     // answers container
     const question = {
-        id: 1,
-        question: 'Qual destes inícios de livro te dão mais vontade de continuar?',
+        id: questionId,
+        question: 'Se você se encontrasse perdido na floresta, você...',
         answers: [
             {   
                 id: 1,
-                text: 'Os dois homens se materializaram inesperedamente.',
+                text: '...aproveitaria a natureza para organizar os pensamentos.',
+                tags: [
+                    'filosofia',
+                    'autoconhecimento'
+                ]
+            },
+            {
+                id: 2,
+                text: '... conjuraria um animal guardião.',
                 tags: [
                     'fantasia'
                 ]
             },
             {
-                id: 2,
-                text: 'Ela era a participante de estudo favorita dos cientistas.',
-                tags: [
-                    'ciências'
-                ]
-            },
-            {
                 id: 3,
-                text: 'Como estou contente de ter partido! Ah, meu amigo, o que é o coração humano!',
+                text: '... obviamente, usaria sua bússola e anotações no seu mapa para se encontrar.',
                 tags: [
-                    'prosa'
+                    'aventura',
+                    'ciência'
                 ]
             },
             {
                 id: 4,
-                text: 'Entra Ricardo, Duque de Gloucester, sozinho.',
+                text: '... iria até o fim para descobrir o paradeiro da Senhora Jameson',
                 tags: [
-                    'arte',
-                    'drama'
+                    'detetive',
+                    'suspense'
                 ]
             }
         ]
@@ -104,12 +104,10 @@ export default function QuizQuestion01({ navigation }) {
                         </TouchableOpacity>                            
                     ))}
                 </View>
-
-                <TouchableOpacity onPress={ () => navigation.navigate(`QuizQuestion${questionId+1}`) } style={styles.nextQuestion} >
+    
+                <TouchableOpacity onPress={ () => navigation.navigate(`QuizQuestion${questionId+1}`)} style={styles.nextQuestion} >
                     <Text style={styles.nextQuestionText}>Próxima <Icon name="arrow-right" style={styles.nextQuestionIcon}  /></Text>
                 </TouchableOpacity>
-    
-                
             </>
                         
         </SafeAreaView>

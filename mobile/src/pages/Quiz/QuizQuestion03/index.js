@@ -9,8 +9,6 @@ import styles from '../styles.js';
 
 import logoImg from '../../../assets/logo-arvore.png';
 
-import NextQuizQuestion from '../../Components/Quiz/QuizNextQuestion';
-
 export default function QuizQuestion01({ navigation }) {
 
     // navigate back
@@ -19,43 +17,44 @@ export default function QuizQuestion01({ navigation }) {
     }
 
     // initialize selected answer state
-    const [selectedAnswer, setSelectedAnswer] = useState(['0']);
+    const [selectedAnswer, setSelectedAnswer] = useState([]);
 
     // question id
-    const questionId = 1;
+    const questionId = 3;
 
     // answers container
     const question = {
-        id: 1,
-        question: 'Qual destes inícios de livro te dão mais vontade de continuar?',
+        id: questionId,
+        question: 'Qual destes filmes é mais sua cara?',
         answers: [
             {   
                 id: 1,
-                text: 'Os dois homens se materializaram inesperedamente.',
+                text: 'Avengers',
                 tags: [
                     'fantasia'
                 ]
             },
             {
                 id: 2,
-                text: 'Ela era a participante de estudo favorita dos cientistas.',
+                text: 'Orgulho e Preconceito',
                 tags: [
-                    'ciências'
+                    'drama',
+                    'romance'
                 ]
             },
             {
                 id: 3,
-                text: 'Como estou contente de ter partido! Ah, meu amigo, o que é o coração humano!',
+                text: 'Jumanji',
                 tags: [
-                    'prosa'
+                    'aventura'
                 ]
             },
             {
                 id: 4,
-                text: 'Entra Ricardo, Duque de Gloucester, sozinho.',
+                text: 'Robocop',
                 tags: [
-                    'arte',
-                    'drama'
+                    'detetive',
+                    'suspense'
                 ]
             }
         ]
@@ -104,12 +103,10 @@ export default function QuizQuestion01({ navigation }) {
                         </TouchableOpacity>                            
                     ))}
                 </View>
-
-                <TouchableOpacity onPress={ () => navigation.navigate(`QuizQuestion${questionId+1}`) } style={styles.nextQuestion} >
+    
+                <TouchableOpacity onPress={ () => navigation.navigate(`QuizQuestion${questionId+1}`)} style={styles.nextQuestion} >
                     <Text style={styles.nextQuestionText}>Próxima <Icon name="arrow-right" style={styles.nextQuestionIcon}  /></Text>
                 </TouchableOpacity>
-    
-                
             </>
                         
         </SafeAreaView>
