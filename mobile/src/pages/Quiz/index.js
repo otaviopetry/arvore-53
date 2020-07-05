@@ -18,7 +18,7 @@ export default function QuizWelcome({ navigation }) {
 
             <View style={styles.welcome}>
                 <Text style={styles.welcomeText}>Oi, Bianca! Este é o início do Pomar, sua jornada pela plataforma da Árvore. Vamos responder umas perguntinhas para começar seu perfil?</Text>
-                <TouchableOpacity onPress={ () => navigation.navigate('QuizQuestion1') }>
+                <TouchableOpacity onPress={ () => navigation.navigate('QuizQuestion01') }>
                     <Icon name="arrow-right" style={styles.startButton} />
                 </TouchableOpacity>
             </View>

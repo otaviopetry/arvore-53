@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
+import api from '../../../services/api';
 
 import logoImg from '../../../assets/logo-arvore.png';
 
