@@ -5,7 +5,9 @@ import {    StyleSheet,
             View, 
             Image, 
             TouchableOpacity, 
+            Button,
             FlatList} from 'react-native';
+import { SocialIcon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
 import { Feather as Icon } from '@expo/vector-icons';
 
@@ -45,15 +47,27 @@ export default function Achievements({listaInsignias}) {
 
             <StatusBar style="auto" />
 
-            <FlatList
-                    data={listaInsignias}
-                    renderItem={({ item }) => 
-                        <Insignia
-                            titulo={item.titulo}
-                            imagem={item.imagem}
-                        />
-                    }
+            <View style={styles.badgesContainer}>
+                <FlatList
+                        data={listaInsignias}
+                        renderItem={({ item }) => 
+                            <Insignia
+                                titulo={item.titulo}
+                                imagem={item.imagem}
+                            />
+                        }
                 />
+
+                <View style={styles.botoesCompartilhar}>
+                    <Button style={styles.compartilharArvore} title="Compartilhar na Árvore"/>
+                    <SocialIcon style={styles.compartilhar} 
+                        button
+                        title='Divida com o Instagram!' 
+                        light
+                        type='instagram'
+                    />
+                </View>
+            </View>
         </View>
     );
 }
@@ -69,6 +83,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#45cbcd',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
+    height: '100%',
+    width:'100%'
+  },
+  badgesContainer: {
+    flex: 1,
+    backgroundColor: '#fafafa',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+    height: '100%',
+    width:'100%'
   },
   logoImg: {
       marginBottom: 16
@@ -81,10 +107,11 @@ const styles = StyleSheet.create({
   insignia: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#fafafa',
+    backgroundColor: '#EFEFEF',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    padding: 5,
     marginBottom: 10,
     marginTop: 10
   },
@@ -98,5 +125,25 @@ const styles = StyleSheet.create({
     width: 'auto',
     height: 100
   },
-
+  botoesCompartilhar: {
+    margin: 10,
+    padding: 5,
+    color: '#fafafa',
+    flexDirection: 'column',
+    width: '90%'
+  },
+  compartilharArvore: {
+    borderWidth: 5,
+    borderRadius: 20,
+    marginBottom: 10,
+    color: '#5AB792',
+    width: '100%'        
+ },
+  compartilhar: {
+    padding: 2,
+    margin: 0,
+    borderRadius: 20,
+    color: '#faf0',
+    width: '100%'  
+  }
 });
