@@ -5,101 +5,99 @@ import { Feather as Icon } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
 import AvatarPlaceholder from '../../assets/avatar-placeholder.png';
-import BookPlaceholder from '../../assets/placeholder-book-cover.png';
-import SmallBookPlaceholder from '../../assets/placeholder-smallbook.png';
 
-export default function Profile({ navigation }) {
+const user = {
+    name: 'Bianca',
+    vocation: 'Viajante do Tempo',
+    schoolInfo: {
+        school: 'Colégio Leonardo da Vinci',
+        year: '1º ano A - Ensino Médio'
+    },
+    badges: [
+        {
+            id: 1,
+            name: 'Lê de tudo',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'
+        },
+        {
+            id: 2,
+            name: 'Multicultural',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'
+        },
+        {
+            id: 3,
+            name: '100% fiel',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'
+        }
+    ],
+    whatImReading: {
+        title: 'A volta ao mundo em 80 dias',
+        author: 'Julio Verne',
+        synopsis: 'Lorem ipsum dolor sit amet consectetur',
+        image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg'
+    },
+    myBookshelf: [
+        {
+            id: 1,
+            name: 'Alice no País das Maravilhas',
+            author: 'Lewis Carrol',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Lewis-Caroll-01.jpg'
+        },
+        {
+            id: 2,
+            name: 'Oliver Twist',
+            author: 'Charles Dickens',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Charles-Dickens-01.jpg'
+        },
+        {
+            id: 3,
+            name: 'A ilha do tesouro',
+            author: 'Robert Louis Stevensson',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Robert-Stevensson-01.jpg'
+        },
+        {
+            id: 4,
+            name: 'Que lindo é o seu jardim',
+            author: 'Agatha Christie',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Agatha-Christie-01.jpg'
+        },
+        {
+            id: 5,
+            name: 'As aventuras de Robinson Crusoé',
+            author: 'Daniel Defoe',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Daniel-Defoe-01.jpg'
+        },
+        {
+            id: 6,
+            name: 'Mulherzinhas',
+            author: 'Louisa May Alcott',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Louisa-May-Alcott.jpg'
+        }
+    ],
+    whatImRecommending: [
+        {
+            id: 6,
+            name: 'Mulherzinhas',
+            author: 'Louisa May Alcott',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Louisa-May-Alcott.jpg'
+        },
+        {
+            id: 5,
+            name: 'As aventuras de Robinson Crusoé',
+            author: 'Daniel Defoe',
+            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Daniel-Defoe-01.jpg'
+        }
+    ],
+    tags: [
+        'aventura',
+        'história',
+        'ciências',
+        'suspense',
+        'autores antigos'
+    ]
+}
 
-    const user = {
-        name: 'Bianca',
-        vocation: 'Viajante do Tempo',
-        schoolInfo: {
-            school: 'Colégio Leonardo da Vinci',
-            year: '1º ano A - Ensino Médio'
-        },
-        badges: [
-            {
-                id: 1,
-                name: 'Lê de tudo',
-                image_uri: 'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'
-            },
-            {
-                id: 2,
-                name: 'Multicultural',
-                image_uri: 'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'
-            },
-            {
-                id: 3,
-                name: '100% fiel',
-                image_uri: 'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'
-            }
-        ],
-        whatImReading: {
-            title: 'A volta ao mundo em 80 dias',
-            author: 'Julio Verne',
-            synopsis: 'Lorem ipsum dolor sit amet consectetur',
-            image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg'
-        },
-        myBookshelf: [
-            {
-                id: 1,
-                name: 'Alice no País das Maravilhas',
-                author: 'Lewis Carrol',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Lewis-Caroll-01.jpg'
-            },
-            {
-                id: 2,
-                name: 'Oliver Twist',
-                author: 'Charles Dickens',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Charles-Dickens-01.jpg'
-            },
-            {
-                id: 3,
-                name: 'A ilha do tesouro',
-                author: 'Robert Louis Stevensson',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Robert-Stevensson-01.jpg'
-            },
-            {
-                id: 4,
-                name: 'Que lindo é o seu jardim',
-                author: 'Agatha Christie',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Agatha-Christie-01.jpg'
-            },
-            {
-                id: 5,
-                name: 'As aventuras de Robinson Crusoé',
-                author: 'Daniel Defoe',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Daniel-Defoe-01.jpg'
-            },
-            {
-                id: 6,
-                name: 'Mulherzinhas',
-                author: 'Louisa May Alcott',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Louisa-May-Alcott.jpg'
-            }
-        ],
-        whatImRecommending: [
-            {
-                id: 6,
-                name: 'Mulherzinhas',
-                author: 'Louisa May Alcott',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Louisa-May-Alcott.jpg'
-            },
-            {
-                id: 5,
-                name: 'As aventuras de Robinson Crusoé',
-                author: 'Daniel Defoe',
-                image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Daniel-Defoe-01.jpg'
-            }
-        ],
-        tags: [
-            'aventura',
-            'história',
-            'ciências',
-            'suspense',
-            'autores antigos'
-        ]
-    }
+export default function Profile({ navigation }) {    
 
     function goBack () {
         navigation.goBack();
@@ -145,7 +143,7 @@ export default function Profile({ navigation }) {
                         <View style={styles.badges}>
                             
                             {user.badges.map( badge => (
-                                <Image style={styles.badge} source={{ uri: badge.image_uri  }} />
+                                <Image key={badge.id} style={styles.badge} source={{ uri: badge.image_uri  }} />
                             ))}
                             
                         </View>

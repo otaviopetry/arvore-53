@@ -4,85 +4,102 @@ import {    StyleSheet,
             Text, 
             View, 
             Image, 
-            TouchableOpacity, 
-            Button,
-            FlatList} from 'react-native';
-import { SocialIcon } from 'react-native-elements'
-import { useNavigation } from '@react-navigation/native';
+            TouchableOpacity
+        } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
-import logoImg from '../../assets/logo-arvore.png';
 
-const IMAGE_PLACEHOLDER = "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indisponível";
-
-export default function Achievements({listaInsignias}) {
-
-    listaInsignias = [{titulo:"Vira-páginas", imagem:'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'}, 
-                      {titulo: "Multi-cultural", imagem:'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'},
-                      {titulo: "100% Fiel", imagem:'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'}];
-
-    const navigation = useNavigation();
+export default function Achievements({ navigation }) {
 
     function goBack () {
         navigation.goBack();
     }
 
-    function Insignia({titulo, imagem}) {
-        return (
-          <View style={styles.insignia}>
-            <Image style={styles.insignia_image} source={{ uri: imagem}}/>
-            <Text style={styles.insignia_title}>{titulo}</Text>
-          </View>
-        );
-      }
+    const badges = [
+        {
+            id: 1,
+            name: 'Lê de tudo',
+            description: 'Você não se contenta com um gênero apenas e lê qualquer assunto que apareça na sua frente.',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'
+        },
+        {
+            id: 2,
+            name: 'Multicultural',
+            description: 'Você já leu livros de autores dos cinco continentes!',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'
+        },
+        {
+            id: 3,
+            name: '100% fiel',
+            description: 'Você leu todos os dias de uma semana.',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'
+        },
+        {
+            id: 4,
+            name: 'Vira-páginas',
+            description: 'Alguém se concentrou na história e leu por 2 horas seguidas!',
+            image_uri: 'http://192.168.0.102:3333/journey/badges/badge-vira-pagina.png'
+        }
+    ];
+
+    
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.menu} onPress={goBack}>
-                <Icon name="arrow-left" size={28} color="#fff" />  
-                <Image source={logoImg} />  
-            </TouchableOpacity>
-            
-            <Text style={styles.welcomeText}>Suas Conquistas</Text>
 
-            <StatusBar style="auto" />
+            <StatusBar style="light" backgroundColor="#45cbcd" />
+
+            <View style={styles.header}>
+                <TouchableOpacity onPress={ goBack }>
+                    <Icon name="arrow-left" size={20} />
+                </TouchableOpacity>
+    
+                <Text style={styles.pageTitle}>Suas Conquistas</Text>
+            </View>
+            
 
             <View style={styles.badgesContainer}>
-                <FlatList
-                        data={listaInsignias}
-                        keyExtractor={ item => item.titulo}
-                        renderItem={({ item }) => 
-                            <Insignia
-                                titulo={item.titulo}
-                                imagem={item.imagem}
-                            />
-                        }
-                />
+                { badges.map( badge => (
+                    <View 
+                        key={badge.id} 
+                        style={[
+                            styles.badgeSquare,
+                            badge.id <= 3 ? styles.selectedBadge : {}
+                        ]}
+                    >
+                        <Image source={{ uri: badge.image_uri }} style={styles.badge} />
+                        <View style={styles.badgeInfo}>
+                            <Text style={styles.badgeTitle}>{badge.name}</Text>
+                            <Text style={styles.badgeDescription}>{badge.description}</Text>
+                        </View>
+                    </View>
+                ))}
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-  menu:{
-    paddingTop: 30,
+  header:{
+    width: '100%',
     flexDirection:'row',
     alignItems: 'center',
+    paddingTop: 32,
+    marginBottom: 16
   },
   container: {
     flex: 1,
-    backgroundColor: '#45cbcd',
+    backgroundColor: '#c7ecee',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
+    padding: 16,
+    paddingTop: Constants.statusBarHeight,
     height: '100%',
     width:'100%'
   },
   badgesContainer: {
     flex: 1,
-    backgroundColor: '#fafafa',
-    alignItems: 'center',
-    justifyContent: 'center',
     margin: 10,
     height: '100%',
     width:'100%'
@@ -90,51 +107,37 @@ const styles = StyleSheet.create({
   logoImg: {
       marginBottom: 16
   },
-  welcomeText: {
-      fontSize: 25,
+  pageTitle: {
+      textAlign: 'center',
+      width: '100%',
+      marginLeft: -16,
+      fontSize: 20,
       fontWeight: 'bold',
-      color: '#fff'
+      color: '#006266'
   },
-  insignia: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#EFEFEF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    padding: 5,
-    marginBottom: 10,
-    marginTop: 10
+  badgeSquare: {
+      flexDirection: 'row',
+      backgroundColor: '#fff',
+      padding: 24,
+      marginBottom: 16,
+      borderRadius: 8,
+      flexShrink: 1
   },
-  insignia_title: {
-    fontWeight: 'bold',
-    color: 'black',
-    fontSize: 20
+  badge: {
+    width: 96,
+    height: 96
   },
-  insignia_image: {
-    borderRadius: 0.1,
-    width: 'auto',
-    height: 100
+  badgeInfo: {
+      flexShrink: 1,
+      marginLeft: 8
   },
-  botoesCompartilhar: {
-    margin: 10,
-    padding: 5,
-    color: '#fafafa',
-    flexDirection: 'column',
-    width: '90%'
+  badgeTitle: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#006266'
   },
-  compartilharArvore: {
-    borderWidth: 5,
-    borderRadius: 20,
-    marginBottom: 10,
-    color: '#5AB792',
-    width: '100%'        
- },
-  compartilhar: {
-    padding: 2,
-    margin: 0,
-    borderRadius: 20,
-    color: '#faf0',
-    width: '100%'  
+  selectedBadge: {
+      borderWidth: 1.25,
+      borderColor: '#006266'
   }
 });
