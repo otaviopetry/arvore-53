@@ -9,14 +9,16 @@ import logoImg from '../../assets/logo-arvore.png';
 export default function Book({ navigation, bookInfo}) {
 
     bookInfo = {
-        titulo: "Pequeno Manual Antirracista",
-        imagem: "https://s3-sa-east-1.amazonaws.com/files.arvoredelivros.com.br/books/images/pequeno-manual-antirracista/intermediaria_9788554515997.jpg",
-        autor: "Djamila Ribeiro",
-        editora: "Companhia das Letras",
-        descricao: "Dez lições breves para entender as origens do racismo e como combatê-lo. Neste pequeno manual, a filósofa e ativista Djamila Ribeiro trata de temas como atualidade do racismo, negritude, branquitude, violência racial, cultura, desejos e afetos.",
+        titulo: "Volta ao mundo em 80 dias",
+        imagem: "'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg'",
+        autor: "Júlio Verne",
+        editora: "TodoLivro",
+        descricao: "Esta coleção traz grandes clássicos da literatura mundial, adaptados em linguagem simples e adequada ao público infantojuvenil. É uma excelente ferramenta escolar e até de preparação para concursos, como o vestibular. Traz ainda um suplemento pedagógico ao final de cada livro, que visa testar o entendimento do leitor sobre os textos. Durante um jogo de cartas no Reform Club de Londres, Mr. Phileas Fogg, um gentleman inglês misterioso e muito rico, aposta com seus parceiros que conseguirá dar a volta completa ao mundo em 80 dias. Todos acham isso absurdo, irrealizável, mas um inglês nunca brinca quando se trata de algo tão importante como uma aposta, e ela é fechada. São 8:45 da noite, é quarta-feira, 2 de outubro; Mr. Fogg garante que estará de volta a Londres, naquela mesma sala, no sábado, 21 de dezembro, às 8:45 da noite; caso contrário, as 20 mil libras de sua conta bancária passarão a pertencer aos seus cinco parceiros de jogo.",
         idioma: "Português",
-        tematica: ["Negritude","Preconceito","História","Sociedade"],
+        categoria: ["Literatura - Ficção científica","Literatura infantojuvenil","Ficção científica"],
+        tematica: ["Viagem","Jogos","Amizade","Aventura"],
     };
+
 
     function goBack () {
         navigation.goBack();
@@ -32,20 +34,32 @@ export default function Book({ navigation, bookInfo}) {
 
         <View style={styles.book}>
             <Text style={styles.titulo}>{bookInfo.titulo}</Text>
+            
             <Image source={{uri: bookInfo.imagem}}/>
+            
             <Text style={styles.negrito}>{bookInfo.autor}</Text>
+            
             <Text >{bookInfo.descricao}</Text>
-            <Text style={styles.negrito}>Idioma</Text>
+
+            <Text style={styles.negrito}>Idioma:</Text>
             <Text>{bookInfo.idioma}</Text>
-            <Text style={styles.negrito}>Tematica</Text>
-            <View style={styles.tematica}>
+            
+            <Text style={styles.negrito}>Categoria:</Text>
+            <View style={styles.labels}>
+                {bookInfo.categoria.map( item => (
+                    <Text style={styles.label}>{item}</Text>
+                ))}
+            </View>
+
+            <Text style={styles.negrito}>Tematica:</Text>
+            <View style={styles.labels}>
                 {bookInfo.tematica.map( item => (
                     <Text style={styles.label}>{item}</Text>
                 ))}
             </View>
 
             <View style={styles.botoesCompartilhar}>
-                <Button title="Compartilhar na Árvore"/>
+                <Button style={styles.compartilharArvore} title="Compartilhar na Árvore"/>
                 <SocialIcon style={styles.compartilhar}
                     title='Compartilhar com Instagram'
                     button
@@ -53,6 +67,9 @@ export default function Book({ navigation, bookInfo}) {
                     type='instagram'
                 />
             </View>
+
+            <Button style={styles.lerAgora} title="Ler Agora"/>
+
         </View>
     </View>
     );
@@ -64,6 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#45cbcd',
     alignItems: 'center',
     justifyContent: 'center',
+    height: '100%'
   },
   logoImg: {
       marginBottom: 16
@@ -82,32 +100,43 @@ const styles = StyleSheet.create({
     fontSize: 25
   },
   negrito: {
+    marginTop: 5,
     fontWeight: 'bold'
   },
   botoesCompartilhar: {
-    marginTop: 10,
-    flexDirection: 'row'
+    margin: 10,
+    flexDirection: 'column'
   },
-  button: {
+  compartilharArvore: {
     borderWidth: 5,
-    borderRadius: 15,
+    borderRadius: 30,
     marginRight: 5,
-    backgroundColor: '#fafafa',
-    width: '50%'        
+    backgroundColor: '#5AB792',
+    width: '80%'        
  },
   compartilhar: {
     marginRight: 5,
+    borderRadius: 30,
     backgroundColor: '#faf0',
-    width: '50%' 
+    width: '90%'  
   },
-  tematica: {
-    flexDirection: 'row'
+  labels: {
+    flexDirection: 'row',
+    margin: 5
   },
   label : {
     borderWidth: 1,
     marginRight: 5,
-    borderColor: 'black',
+    borderColor: 'gray',
     width: 'auto',
-    borderRadius: 1
-  }
+    borderRadius: 2,
+    padding: 4
+  },
+  lerAgora: {
+    borderWidth: 5,
+    borderRadius: 15,
+    marginRight: 5,
+    backgroundColor: '#5AB792',
+    width: '100%'        
+ }
 });
