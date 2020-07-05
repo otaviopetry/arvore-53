@@ -5,20 +5,21 @@ import {    StyleSheet,
             View, 
             Image, 
             TouchableOpacity, 
+            Button,
             FlatList} from 'react-native';
+import { SocialIcon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 import logoImg from '../../assets/logo-arvore.png';
-import badge1 from '../../assets/badge1.png';
-import badge2 from '../../assets/badge2.png';
 
 const IMAGE_PLACEHOLDER = "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indisponível";
 
 export default function Achievements({listaInsignias}) {
 
-    listaInsignias = [{titulo:"Vira-páginas", imagem:badge1}, 
-                      {titulo: "Multi-cultural", imagem:badge2}];
+    listaInsignias = [{titulo:"Vira-páginas", imagem:'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'}, 
+                      {titulo: "Multi-cultural", imagem:'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'},
+                      {titulo: "100% Fiel", imagem:'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'}];
 
     const navigation = useNavigation();
 
@@ -29,7 +30,7 @@ export default function Achievements({listaInsignias}) {
     function Insignia({titulo, imagem}) {
         return (
           <View style={styles.insignia}>
-            <Image style={styles.insignia_image} source={imagem}/>
+            <Image style={styles.insignia_image} source={{ uri: imagem}}/>
             <Text style={styles.insignia_title}>{titulo}</Text>
           </View>
         );
@@ -46,15 +47,27 @@ export default function Achievements({listaInsignias}) {
 
             <StatusBar style="auto" />
 
-            <FlatList
-                    data={listaInsignias}
-                    renderItem={({ item }) => 
-                        <Insignia
-                            titulo={item.titulo}
-                            imagem={item.imagem}
-                        />
-                    }
+            <View style={styles.badgesContainer}>
+                <FlatList
+                        data={listaInsignias}
+                        renderItem={({ item }) => 
+                            <Insignia
+                                titulo={item.titulo}
+                                imagem={item.imagem}
+                            />
+                        }
                 />
+
+                <View style={styles.botoesCompartilhar}>
+                    <Button style={styles.compartilharArvore} title="Compartilhar na Árvore"/>
+                    <SocialIcon style={styles.compartilhar} 
+                        button
+                        title='Divida com o Instagram!' 
+                        light
+                        type='instagram'
+                    />
+                </View>
+            </View>
         </View>
     );
 }
@@ -70,6 +83,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#45cbcd',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
+    height: '100%',
+    width:'100%'
+  },
+  badgesContainer: {
+    flex: 1,
+    backgroundColor: '#fafafa',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+    height: '100%',
+    width:'100%'
   },
   logoImg: {
       marginBottom: 16
@@ -82,10 +107,11 @@ const styles = StyleSheet.create({
   insignia: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#fafafa',
+    backgroundColor: '#EFEFEF',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    padding: 5,
     marginBottom: 10,
     marginTop: 10
   },
@@ -99,5 +125,25 @@ const styles = StyleSheet.create({
     width: 'auto',
     height: 100
   },
-
+  botoesCompartilhar: {
+    margin: 10,
+    padding: 5,
+    color: '#fafafa',
+    flexDirection: 'column',
+    width: '90%'
+  },
+  compartilharArvore: {
+    borderWidth: 5,
+    borderRadius: 20,
+    marginBottom: 10,
+    color: '#5AB792',
+    width: '100%'        
+ },
+  compartilhar: {
+    padding: 2,
+    margin: 0,
+    borderRadius: 20,
+    color: '#faf0',
+    width: '100%'  
+  }
 });
