@@ -37,7 +37,7 @@ export default function QuizWelcome({ navigation }) {
         },
         {
             id: 4,
-            text: 'Entra Ricardo, Duque de Gloucester, sozinho. blablbaablaba',
+            text: 'Entra Ricardo, Duque de Gloucester, sozinho.',
             tags: [
                 'arte',
                 'drama'
@@ -119,11 +119,12 @@ const styles = StyleSheet.create({
   },
   answerContainer: {
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      width: '100%'
   },
   answer: {
-      width: '100%',
       height: 80,
+      width: '100%',
       padding: 16,
       marginVertical: 8,
       borderWidth: 2,
