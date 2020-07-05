@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
-import logoImg from '../../assets/logo-arvore.png';
+import welcomeIllustration from '../../assets/pomar-welcome-illustration.png';
 
 export default function QuizWelcome({ navigation }) {
 
@@ -17,9 +17,12 @@ export default function QuizWelcome({ navigation }) {
             <StatusBar style="light" backgroundColor="#45cbcd" />
 
             <View style={styles.welcome}>
-                <Text style={styles.welcomeText}>Oi, Bianca! Este é o início do Pomar, sua jornada pela plataforma da Árvore. Vamos responder umas perguntinhas para começar seu perfil?</Text>
+                <Image source={welcomeIllustration} style={styles.illustration} />
+                <Text style={styles.welcomeTitle}>Oi, Bianca!</Text>
+                <Text style={styles.welcomeText}>Este é o início do Pomar, sua jornada aqui na Árvore. Tenho certeza que você vai aproveitar muito e plantar várias sementinhas por aí.</Text>
+                <Text style={styles.welcomeDescription}>Tenho algumas perguntinhas para conhecer você melhor e poder te sugerir leituras.</Text>
                 <TouchableOpacity onPress={ () => navigation.navigate('QuizQuestion1') }>
-                    <Icon name="arrow-right" style={styles.startButton} />
+                    <Text style={styles.startButton}>Vamos lá?</Text>
                 </TouchableOpacity>
             </View>
                         
@@ -30,21 +33,39 @@ export default function QuizWelcome({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#45cbcd',
+    padding: 16,
+    backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
   },
   welcome: {
       alignItems: 'center'
-  },  
+  },
+  illustration: {
+      marginBottom: 32
+  },
+  welcomeTitle: {
+      marginBottom: 8,
+      fontSize: 32,
+      color: "#006266"
+  },
   welcomeText: {
       fontWeight: 'bold',
-      color: '#fff',
-      textAlign: 'center'
+      textAlign: 'center',
+      color: "#006266"
+  },
+  welcomeDescription: {
+      textAlign: 'center',
+      marginTop: 8
   },
   startButton: {
       marginTop: 16,
-      fontSize: 24,
+      fontSize: 16,
+      fontWeight: 'bold',
+      backgroundColor: '#45cbcd',
+      padding: 16,
+      marginTop: 32,
+      borderRadius: 16,
       color: '#fff'
-  }
+}
 });
