@@ -16,7 +16,8 @@ const IMAGE_PLACEHOLDER = "https://via.placeholder.com/470x594/FFFFFF/?text=Imag
 export default function Achievements({listaInsignias}) {
 
     listaInsignias = [{titulo:"Vira-páginas", imagem:'http://192.168.0.102:3333/journey/badges/badge-le-de-tudo.png'}, 
-                      {titulo: "Multi-cultural", imagem:'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'}];
+                      {titulo: "Multi-cultural", imagem:'http://192.168.0.102:3333/journey/badges/badge-multicultural.png'},
+                      {titulo: "100% Fiel", imagem:'http://192.168.0.102:3333/journey/badges/badge-100porcento-fiel.png'}];
 
     const navigation = useNavigation();
 
