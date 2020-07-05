@@ -8,8 +8,9 @@ routes.get( '/', (request, response) => {
 })
 
 routes.get( '/quiz', (request, response) => {
-    response.send({ message: 'Página do quiz inicial' }); 
+    response.send({ data: question}); 
 })
+
 
 routes.get('/library', (request, response) => {
     response.send({ message: 'Página inicial da plataforma' });

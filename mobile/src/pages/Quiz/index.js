@@ -1,46 +1,71 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
-import logoImg from '../../assets/logo-arvore.png';
+import welcomeIllustration from '../../assets/pomar-welcome-illustration.png';
 
-export default function Achievements({ navigation }) {
+export default function QuizWelcome({ navigation }) {
 
     function goBack () {
         navigation.goBack();
     }
 
     return (
-    <View style={styles.container}>
-        <TouchableOpacity onPress={goBack}>
-            <Icon name="arrow-left" size={28} color="#fff" />
-            <Text>Voltar para o início</Text>   
-        </TouchableOpacity>
-        <TouchableOpacity onPress={ () => navigation.navigate('Library')}>
-            <Icon name="arrow-right" size={28} color="#fff" />
-            <Text>Ir para Biblioteca</Text>
-        </TouchableOpacity>
+        <SafeAreaView style={styles.container}>
 
-        <Image source={logoImg} />
-        <Text style={styles.welcomeText}>Tela inicial do Quiz</Text>
-        <StatusBar style="auto" />
-    </View>
+            <StatusBar style="light" backgroundColor="#45cbcd" />
+
+            <View style={styles.welcome}>
+                <Image source={welcomeIllustration} style={styles.illustration} />
+                <Text style={styles.welcomeTitle}>Oi, Bianca!</Text>
+                <Text style={styles.welcomeText}>Este é o início do Pomar, sua jornada aqui na Árvore. Tenho certeza que você vai aproveitar muito e plantar várias sementinhas por aí.</Text>
+                <Text style={styles.welcomeDescription}>Tenho algumas perguntinhas para conhecer você melhor e poder te sugerir leituras.</Text>
+                <TouchableOpacity onPress={ () => navigation.navigate('QuizQuestion1') }>
+                    <Text style={styles.startButton}>Vamos lá?</Text>
+                </TouchableOpacity>
+            </View>
+                        
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#45cbcd',
+    padding: 16,
+    backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoImg: {
-      marginBottom: 16
+  welcome: {
+      alignItems: 'center'
+  },
+  illustration: {
+      marginBottom: 32
+  },
+  welcomeTitle: {
+      marginBottom: 8,
+      fontSize: 32,
+      color: "#006266"
   },
   welcomeText: {
       fontWeight: 'bold',
+      textAlign: 'center',
+      color: "#006266"
+  },
+  welcomeDescription: {
+      textAlign: 'center',
+      marginTop: 8
+  },
+  startButton: {
+      marginTop: 16,
+      fontSize: 16,
+      fontWeight: 'bold',
+      backgroundColor: '#45cbcd',
+      padding: 16,
+      marginTop: 32,
+      borderRadius: 16,
       color: '#fff'
-  }
+}
 });
