@@ -11,8 +11,7 @@ import Profile from './pages/Profile';
 import Achievements from './pages/Achievements';
 import Bookshelf from './pages/Bookshelf';
 import Book from './pages/Book';
-import BooksRead from './pages/BooksRead'
-import Achievements from './pages/Achievements';
+import BooksRead from './pages/BooksRead';
 
 export default function Routes() {
     return (
@@ -27,7 +26,6 @@ export default function Routes() {
                 <AppStack.Screen name="Bookshelf" component={Bookshelf} />                     
                 <AppStack.Screen name="Book" component={Book} />
                 <AppStack.Screen name="BooksRead" component={BooksRead} />
-                <AppStack.Screen name="Achievements" component={Achievements} />
             </AppStack.Navigator>
 
         </NavigationContainer>
