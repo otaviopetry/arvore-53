@@ -50,6 +50,7 @@ export default function Achievements({listaInsignias}) {
             <View style={styles.badgesContainer}>
                 <FlatList
                         data={listaInsignias}
+                        keyExtractor={ item => item.titulo}
                         renderItem={({ item }) => 
                             <Insignia
                                 titulo={item.titulo}
