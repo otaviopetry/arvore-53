@@ -47,14 +47,14 @@ export default function Book({ navigation, bookInfo}) {
             <Text style={styles.negrito}>Categoria:</Text>
             <View style={styles.labels}>
                 {bookInfo.categoria.map( item => (
-                    <Text style={styles.label}>{item}</Text>
+                    <Text key={item} style={styles.label}>{item}</Text>
                 ))}
             </View>
 
             <Text style={styles.negrito}>Tematica:</Text>
             <View style={styles.labels}>
                 {bookInfo.tematica.map( item => (
-                    <Text style={styles.label}>{item}</Text>
+                    <Text key={item} style={styles.label}>{item}</Text>
                 ))}
             </View>
 
