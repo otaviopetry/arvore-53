@@ -14,9 +14,16 @@ export default function Profile({ navigation }) {
 
     return (
 
+    /* Big container */
     <SafeAreaView style={styles.container}>
 
+        <TouchableOpacity onPress={ goBack }>
+            <Icon name="arrow-left" size={24} />
+        </TouchableOpacity>
+
+        { /* Profile Header: Avatar, Name, School and Badges */ } 
         <View style={styles.header}>
+            
             <View style={styles.summary}>
                 <Image source={AvatarPlaceholder} style={styles.userAvatar} />
                 <View style={styles.userInfo}>
@@ -29,10 +36,14 @@ export default function Profile({ navigation }) {
                         <Icon name="anchor" style={styles.icon} />
                         <Icon name="archive" style={styles.icon} />
                     </View>
+                    <TouchableOpacity onPress={ () => navigation.navigate('Achievements')}>
+                        <Text>Ver conquistas</Text>
+                    </TouchableOpacity>                    
                 </View>
             </View>
         </View>
 
+        { /* User Bookshelf */ }
         <View style={styles.bookshelf}>
             <Text>Minha estante</Text>
             <View style={styles.theActualShelf}>
@@ -40,9 +51,10 @@ export default function Profile({ navigation }) {
             </View>            
         </View>
 
+        { /* What I'm Reading section */ }
         <View style={styles.whatImReading}>
             <Text>O que estou lendo</Text>
-            <View style={styles.theBook}>
+            <TouchableOpacity style={styles.theBook} onPress={ () => navigation.navigate('Book')}>
                 <Image source={AvatarPlaceholder} />
                 <View style={styles.theBook}>
                     <View>
@@ -50,8 +62,10 @@ export default function Profile({ navigation }) {
                         <Text style={styles.theBookAuthor}>Julio Verne</Text>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         </View>
+
+        { /* What I'm recommending section */ }
         <View style={styles.whatImRecommending}>
             <Text>O que eu indico</Text>
             <View style={styles.recommendedBooksContainer}>
@@ -79,6 +93,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         flex: 1,
         padding: 8,
+        paddingTop: Constants.statusBarHeight + 20,
         backgroundColor: '#45cbcd',
         },
         logoImg: {
@@ -94,7 +109,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         padding: 8,
-        paddingTop: Constants.statusBarHeight + 20,
+        marginTop: 16,        
         flexDirection: 'row'
         
     },
