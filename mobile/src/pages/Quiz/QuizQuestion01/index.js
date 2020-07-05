@@ -1,52 +1,58 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
+
 import api from '../../../services/api';
 
 import logoImg from '../../../assets/logo-arvore.png';
 
-export default function QuizWelcome({ navigation }) {
+export default function QuizQuestion01({ navigation }) {
 
     // navigate back
     function goBack () {
         navigation.goBack();
     }
 
-    // answers container
-    const answers = [
-        {   
-            id: 1,
-            text: 'Os dois homens se materializaram inesperedamente.',
-            tags: [
-                'fantasia'
-            ]
-        },
-        {
-            id: 2,
-            text: 'Ela era a participante de estudo favorita dos cientistas.',
-            tags: [
-                'ciências'
-            ]
-        },
-        {
-            id: 3,
-            text: 'Como estou contente de ter partido! Ah, meu amigo, o que é o coração humano!',
-            tags: [
-                'prosa'
-            ]
-        },
-        {
-            id: 4,
-            text: 'Entra Ricardo, Duque de Gloucester, sozinho.',
-            tags: [
-                'arte',
-                'drama'
-            ]
-        }
-    ];
-
     const [selectedAnswer, setSelectedAnswer] = useState([]);
+
+    // answers container
+    const question = {
+        id: 1,
+        question: 'Qual destes inícios de livro te dão mais vontade de continuar?',
+        answers: [
+            {   
+                id: 1,
+                text: 'Os dois homens se materializaram inesperedamente.',
+                tags: [
+                    'fantasia'
+                ]
+            },
+            {
+                id: 2,
+                text: 'Ela era a participante de estudo favorita dos cientistas.',
+                tags: [
+                    'ciências'
+                ]
+            },
+            {
+                id: 3,
+                text: 'Como estou contente de ter partido! Ah, meu amigo, o que é o coração humano!',
+                tags: [
+                    'prosa'
+                ]
+            },
+            {
+                id: 4,
+                text: 'Entra Ricardo, Duque de Gloucester, sozinho.',
+                tags: [
+                    'arte',
+                    'drama'
+                ]
+            }
+        ]
+    };
+
 
     function handleSelectAnswer (id) {
 
@@ -66,10 +72,10 @@ export default function QuizWelcome({ navigation }) {
             <StatusBar style="light" backgroundColor="#45cbcd" />
 
             <>
-                <Text style={styles.question}>Qual destes inícios de livro te dão mais vontade de continuar?</Text>              
+                <Text style={styles.question}>{question.question}</Text>              
                 
                 <View style={styles.answerContainer}>
-                    {answers.map ( answer => (
+                    {question.answers.map( answer => (
                         <TouchableOpacity 
                             key={answer.id} 
                             style={[
