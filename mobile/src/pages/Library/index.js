@@ -8,6 +8,59 @@ import Constants from 'expo-constants';
 import BookPlaceholder from '../../assets/placeholder-book-cover.png';
 import SmallBookPlaceholder from '../../assets/placeholder-smallbook.png';
 
+const sugestions = [
+    {
+        id: 1,
+        image_uri: 'http://192.168.0.102:3333/uploads/sugestions/sugestion01.jpg'
+    },
+    {
+        id: 2,
+        image_uri: 'http://192.168.0.102:3333/uploads/sugestions/sugestion02.png'
+    },
+    {
+        id: 3,
+        image_uri: 'http://192.168.0.102:3333/uploads/sugestions/sugestion03.png'
+    },
+    {
+        id: 4,
+        image_uri: 'http://192.168.0.102:3333/uploads/sugestions/sugestion04.png'
+    },
+    {
+        id: 5,
+        image_uri: 'http://192.168.0.102:3333/uploads/sugestions/sugestion05.png'
+    }
+]
+
+const featured = [
+    {
+        id: 1,
+        image_uri: 'http://192.168.0.102:3333/uploads/featured/featured01.png'
+    },
+    {
+        id: 2,
+        image_uri: 'http://192.168.0.102:3333/uploads/featured/featured02.png'
+    },
+    {
+        id: 3,
+        image_uri: 'http://192.168.0.102:3333/uploads/featured/featured03.png'
+    },
+    {
+        id: 4,
+        image_uri: 'http://192.168.0.102:3333/uploads/featured/featured04.png'
+    },
+    {
+        id: 5,
+        image_uri: 'http://192.168.0.102:3333/uploads/featured/featured05.png'
+    },
+]
+
+const keepReading = [
+    {
+        id: 1,
+        image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg'
+    }
+]
+
 export default function Library({ navigation }) {
 
     const [searchText, setSearchText] = React.useState('')
@@ -51,10 +104,9 @@ export default function Library({ navigation }) {
                         <Text style={styles.title}>Sugestões para você</Text>
     
                         <ScrollView horizontal>
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
+                            { sugestions.map( sugestion => (
+                                <Image key={sugestion.id} source={{ uri: sugestion.image_uri }} style={styles.libraryBook} />
+                            ))}
                         </ScrollView>
                     </View>
     
@@ -62,10 +114,9 @@ export default function Library({ navigation }) {
                         <Text style={styles.title}>Destaques</Text>
     
                         <ScrollView horizontal>
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
-                            <Image source={BookPlaceholder} style={styles.libraryBook} />
+                            { featured.map( book => (
+                                <Image key={book.id} source={{ uri: book.image_uri }} style={styles.libraryBook} />
+                            ))}
                         </ScrollView>
                     </View>
     
@@ -73,10 +124,9 @@ export default function Library({ navigation }) {
                         <Text style={styles.title}>Continuar lendo</Text>
     
                         <ScrollView horizontal>
-                            <Image source={SmallBookPlaceholder} style={styles.libraryBook} />
-                            <Image source={SmallBookPlaceholder} style={styles.libraryBook} />
-                            <Image source={SmallBookPlaceholder} style={styles.libraryBook} />
-                            <Image source={SmallBookPlaceholder} style={styles.libraryBook} />
+                            { keepReading.map( book => (
+                                <Image key={book.id} source={{ uri: book.image_uri }} style={styles.libraryBook} />
+                            ))}
                         </ScrollView>
                     </View>
     
@@ -133,6 +183,8 @@ const styles = StyleSheet.create({
       marginBottom: 24
   },
   libraryBook: {
-      marginRight: 8
+      marginRight: 8,
+      width: 110,
+    height: 180
   }
 });
