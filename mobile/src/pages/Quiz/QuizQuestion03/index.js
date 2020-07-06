@@ -29,7 +29,7 @@ export default function QuizQuestion01({ navigation }) {
         answers: [
             {   
                 id: 1,
-                text: 'Avengers',
+                text: 'Rei Leão',
                 tags: [
                     'fantasia'
                 ]
@@ -44,17 +44,18 @@ export default function QuizQuestion01({ navigation }) {
             },
             {
                 id: 3,
-                text: 'Jumanji',
+                text: 'Senhor dos Anéis',
                 tags: [
-                    'aventura'
+                    'aventura',
+                    'fantasia'
                 ]
             },
             {
                 id: 4,
-                text: 'Robocop',
+                text: 'Menina Malvada',
                 tags: [
-                    'detetive',
-                    'suspense'
+                    'drama',
+                    'romance'
                 ]
             }
         ]

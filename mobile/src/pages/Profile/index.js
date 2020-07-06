@@ -33,7 +33,7 @@ const user = {
     whatImReading: {
         title: 'A volta ao mundo em 80 dias',
         author: 'Julio Verne',
-        synopsis: 'Lorem ipsum dolor sit amet consectetur',
+        synopsis: 'Para um homem calmo e metódico como Phileas Fogg, que nunca se apressa, porém nunca chega atrasado, não existem adversidades que não possam ser ultrapassadas.',
         image_uri: 'http://192.168.0.102:3333/uploads/book-cover-Julio-Verne-01.jpeg'
     },
     myBookshelf: [
@@ -154,7 +154,7 @@ export default function Profile({ navigation }) {
             { /* What I'm Reading section */ }
             <View style={styles.whatImReading}>
                 <Text style={styles.sectionTitle}>O que estou lendo</Text>
-                <TouchableOpacity style={styles.theBook} onPress={ () => navigation.navigate('Book')}>
+                <TouchableOpacity style={styles.theBook}>
                     <View style={{width: '30%', marginRight: 16}}>
                         <Image style={styles.bookCover} source={{ uri: user.whatImReading.image_uri }} />
                     </View>
@@ -318,7 +318,8 @@ const styles = StyleSheet.create({
     theBook: {
         flexDirection: 'row',
         flexShrink: 1,
-        marginTop: 8
+        marginVertical: 8,
+        alignItems: 'center'
     },
     theBookTitle: {
         fontSize: 24,

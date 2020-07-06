@@ -105,7 +105,7 @@ export default function QuizQuestion01({ navigation }) {
                     ))}
                 </View>
     
-                <TouchableOpacity onPress={ () => navigation.navigate(`QuizQuestion${questionId+1}`)} style={styles.nextQuestion} >
+                <TouchableOpacity onPress={ () => navigation.navigate('QuizFinalScreen')} style={styles.nextQuestion} >
                     <Text style={styles.nextQuestionText}>Próxima <Icon name="arrow-right" style={styles.nextQuestionIcon}  /></Text>
                 </TouchableOpacity>
             </>
